@@ -1,3 +1,4 @@
+'use scrict';
 import './ExpenseDate.css';
 import Card from './Card';
 function ExpenseDate(props) {

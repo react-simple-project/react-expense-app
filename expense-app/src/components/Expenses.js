@@ -1,10 +1,13 @@
+'use scrict';
 import ExpenseItem from './ExpenseItem';
 import './Expenses.css';
 import Card from './Card';
+import NewExpense from './NewExpense';
 
 function Expenses(props) {
   return (
     <Card className='expenses'>
+      <NewExpense />
       <ExpenseItem
         title={props.items[0].title}
         amount={props.items[0].amount}

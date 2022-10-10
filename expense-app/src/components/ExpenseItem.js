@@ -1,7 +1,7 @@
+'use scrict';
 import Card from './Card';
 import ExpenseDate from './ExpenseDate';
 import './ExpenseItem.css';
-import Button from './Button';
 function ExpenseItem(props) {
   return (
     <Card className='expense-item'>
