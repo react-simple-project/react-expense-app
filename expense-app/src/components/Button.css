@@ -1,0 +1,13 @@
+.button {
+  width: 100px;
+  height: 50px;
+  border-radius: 15px;
+}
+
+.button--primary {
+  background-color: rgb(55, 55, 255);
+}
+
+.button--danger{
+  background-color: brown;
+}
