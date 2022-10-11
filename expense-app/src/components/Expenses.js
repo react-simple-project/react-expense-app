@@ -2,12 +2,15 @@
 import ExpenseItem from './ExpenseItem';
 import './Expenses.css';
 import Card from './Card';
-import NewExpense from './NewExpense';
+import Filter from './Filter';
 
 function Expenses(props) {
+  const filterChangeListener = (year) =>{
+    console.log(year)
+  }
   return (
     <Card className='expenses'>
-      <NewExpense />
+      <Filter  onFilterChangeYear={filterChangeListener}/>
       <ExpenseItem
         title={props.items[0].title}
         amount={props.items[0].amount}
