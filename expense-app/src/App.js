@@ -4,11 +4,13 @@ import NewExpense from './components/NewExpense';
 import { useState } from 'react';
 
 const localStorageGrabber = () => {
+  localStorage.clear();
   if (localStorage.expenses) {
     const retrievedExpenses = JSON.parse(localStorage.getItem('expenses'));
     const expenses = [...retrievedExpenses];
     expenses.forEach((object) => {
-      object.date = new Date(object.date.slice(0, 10));
+      let day = +object.date.slice(8, 10);
+      object.date = new Date(object.date.slice(0, 8) + (day + 1));
     });
     return expenses;
   } else {
@@ -50,6 +52,7 @@ function App() {
       return [enteredExpenseData, ...prevExpense];
     });
   };
+
   localStorage.setItem('expenses', JSON.stringify(expenses));
   return (
     <div>

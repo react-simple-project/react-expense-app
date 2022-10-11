@@ -18,12 +18,13 @@ const ExpenseForm = (props) => {
     setValueDate(event.target.value);
   };
   const submitEventHandler = (event) => {
+    const newDay = +grabValueDate.slice(8) + 1; // new Date() day starts at 0, so need to add 1 to be on correct date
+    const correctDate = grabValueDate.slice(0, 8) + newDay;
     event.preventDefault();
-
     const expenseData = {
       title: grabValueTitle,
       amount: grabValueAmount,
-      date: new Date(grabValueDate),
+      date: new Date(correctDate),
     };
     // Passing the expenseData object into the props function allows the data to be accessed by the parent element
     props.onSaveExpenseData(expenseData);
@@ -67,7 +68,7 @@ const ExpenseForm = (props) => {
         </div>
         <div className='new-expense__control'>
           <label>Add New Expense:</label>
-          <button>Button</button>
+          <button>Submit</button>
         </div>
       </div>
     </form>

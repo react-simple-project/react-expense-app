@@ -1,25 +1,27 @@
 'use scrict';
-import ExpenseItem from './ExpenseItem';
 import './Expenses.css';
 import Card from './Card';
 import Filter from './Filter';
 import { useState } from 'react';
+import ExpensesList from './ExpensesList';
+
 function Expenses(props) {
-  const [grabYear, setYear] = useState('');
+  const [grabYear, setYear] = useState('All Years');
   const filterChangeListener = (year) => {
     setYear(year);
   };
+  const displayedExpenses = props.items.filter((items) => {
+    if (grabYear === 'All Years') {
+      return items;
+    } else {
+      return grabYear === items.date.getFullYear().toString();
+    }
+  });
+
   return (
     <Card className='expenses'>
       <Filter onFilterChangeYear={filterChangeListener} />
-      {props.items.map((expenses) => (
-        <ExpenseItem
-          key={expenses.id}
-          title={expenses.title}
-          amount={expenses.amount}
-          date={expenses.date}
-        />
-      ))}
+      <ExpensesList items={displayedExpenses} />
     </Card>
   );
 }
