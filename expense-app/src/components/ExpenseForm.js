@@ -23,7 +23,7 @@ const ExpenseForm = (props) => {
     const expenseData = {
       title: grabValueTitle,
       amount: grabValueAmount,
-      date: grabValueDate,
+      date: new Date(grabValueDate),
     };
     // Passing the expenseData object into the props function allows the data to be accessed by the parent element
     props.onSaveExpenseData(expenseData);
@@ -37,6 +37,7 @@ const ExpenseForm = (props) => {
         <div className='new-expense__control'>
           <label>Title</label>
           <input
+            required
             type='text'
             value={grabValueTitle}
             onChange={titleEventHandler}
@@ -45,6 +46,7 @@ const ExpenseForm = (props) => {
         <div className='new-expense__control'>
           <label>Amount</label>
           <input
+            required
             onChange={amountEventHandler}
             value={grabValueAmount}
             type='number'
@@ -55,6 +57,7 @@ const ExpenseForm = (props) => {
         <div className='new-expense__control'>
           <label>Date</label>
           <input
+            required
             onChange={dateEventHandler}
             value={grabValueDate}
             type='date'
