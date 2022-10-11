@@ -9,12 +9,12 @@ function Expenses(props) {
   const filterChangeListener = (year) => {
     setYear(year);
   };
-  console.log(grabYear);
   return (
     <Card className='expenses'>
       <Filter onFilterChangeYear={filterChangeListener} />
       {props.items.map((expenses) => (
         <ExpenseItem
+          key={expenses.id}
           title={expenses.title}
           amount={expenses.amount}
           date={expenses.date}
