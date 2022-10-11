@@ -1,7 +1,7 @@
 'use scrict';
 import './ExpenseForm.css';
 import { useState } from 'react';
-const ExpenseForm = () => {
+const ExpenseForm = (props) => {
   //TODO Make Max date dynamic
   //TODO Attach labels to forms
   const [grabValueTitle, setValueTitle] = useState('');
@@ -19,12 +19,14 @@ const ExpenseForm = () => {
   };
   const submitEventHandler = (event) => {
     event.preventDefault();
+
     const expenseData = {
       title: grabValueTitle,
       amount: grabValueAmount,
       date: grabValueDate,
     };
-    console.log(expenseData);
+    // Passing the expenseData object into the props function allows the data to be accessed by the parent element
+    props.onSaveExpenseData(expenseData);
     setValueTitle('');
     setValueAmount('');
     setValueDate('');

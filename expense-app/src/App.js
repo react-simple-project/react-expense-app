@@ -1,6 +1,13 @@
 'use scrict';
 import Expenses from './components/Expenses';
+import NewExpense from './components/NewExpense';
+import Card from './components/Card';
+
 function App() {
+  const addExpenseItems = (enteredExpenseData) => {
+    console.log(enteredExpenseData);
+  };
+
   const expenses = [
     {
       id: 'e1',
@@ -25,6 +32,7 @@ function App() {
 
   return (
     <div>
+      <NewExpense onAddExpense={addExpenseItems} />
       <Expenses items={expenses} />
     </div>
   );
