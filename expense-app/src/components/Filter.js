@@ -1,9 +1,9 @@
 'use strict';
 import './Filter.css';
-
 const Filter = (props) => {
   const filterChangeListener = (event) => {
     props.onFilterChangeYear(event.target.value);
+
   };
 
   return (
