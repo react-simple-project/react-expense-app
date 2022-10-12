@@ -2,8 +2,6 @@
 import './ExpenseForm.css';
 import { useState } from 'react';
 const ExpenseForm = (props) => {
-  //TODO Make Max date dynamic
-  //TODO Attach labels to forms
   const [grabValueTitle, setValueTitle] = useState('');
   const [grabValueAmount, setValueAmount] = useState('');
   const [grabValueDate, setValueDate] = useState('');
