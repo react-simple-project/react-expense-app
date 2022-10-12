@@ -1,3 +1,4 @@
+'use strict';
 import './ExpensesList.css';
 import ExpenseItem from './ExpenseItem';
 const ExpensesList = (props) => {

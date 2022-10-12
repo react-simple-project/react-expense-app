@@ -18,9 +18,12 @@ function Expenses(props) {
     }
   });
 
+  const allYears = props.items.map(expenses => {
+   return expenses.date.getFullYear()
+  })
   return (
     <Card className='expenses'>
-      <Filter onFilterChangeYear={filterChangeListener} />
+      <Filter years={new Set(allYears)} onFilterChangeYear={filterChangeListener} />
       <ExpensesList items={displayedExpenses} />
     </Card>
   );
