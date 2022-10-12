@@ -3,18 +3,21 @@ import './Filter.css';
 const Filter = (props) => {
   const filterChangeListener = (event) => {
     props.onFilterChangeYear(event.target.value);
-
   };
-
+  const uniqueYears = Array.from(props.years);
   return (
     <div className='expenses-filter'>
       <div className='expenses-filter__control'>
         <label>Filter by year</label>
         <select onChange={filterChangeListener}>
-          <option value='2022'>2022</option>
-          <option value='2021'>2021</option>
-          <option value='2020'>2020</option>
-          <option value='2019'>2019</option>
+          <option value='All Years'>All Years</option>
+          {uniqueYears.map((year) => {
+            return (
+              <option key={year} value={year}>
+                {year}
+              </option>
+            );
+          })}
         </select>
       </div>
     </div>
