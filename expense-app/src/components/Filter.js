@@ -1,5 +1,7 @@
-'use strict';
+
 import './Filter.css';
+
+//PARENT Expenses.js
 const Filter = (props) => {
   const filterChangeListener = (event) => {
     props.onFilterChangeYear(event.target.value);

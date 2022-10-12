@@ -1,6 +1,5 @@
-'use scrict';
 import Expenses from './components/Expenses';
-import NewExpense from './components/NewExpense';
+import NewExpense from './components/NewExpense/NewExpense';
 import { useState } from 'react';
 
 const localStorageGrabber = () => {

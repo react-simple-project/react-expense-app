@@ -1,6 +1,8 @@
-'use strict';
+
 import './ExpensesList.css';
 import ExpenseItem from './ExpenseItem';
+
+//PARENT Expenses.js
 const ExpensesList = (props) => {
   if (!props.items.length) {
     return <h2 className='expenses-list__fallback'>No expenses found.</h2>;

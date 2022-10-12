@@ -1,6 +1,8 @@
 'use scrict';
 import './ExpenseForm.css';
 import { useState } from 'react';
+
+//Parent NewExpense.js
 const ExpenseForm = (props) => {
   const [grabValueTitle, setValueTitle] = useState('');
   const [grabValueAmount, setValueAmount] = useState('');

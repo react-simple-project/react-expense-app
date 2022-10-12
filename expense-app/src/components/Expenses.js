@@ -1,29 +1,34 @@
 'use scrict';
 import './Expenses.css';
-import Card from './Card';
+import Card from './UI/Card';
 import Filter from './Filter';
 import { useState } from 'react';
 import ExpensesList from './ExpensesList';
+import ExpensesChart from './Chart/ExpensesChart';
 
 function Expenses(props) {
   const [grabYear, setYear] = useState('All Years');
   const filterChangeListener = (year) => {
     setYear(year);
   };
-  const displayedExpenses = props.items.filter((items) => {
+  const displayedExpenses = props.items.filter((indexItems) => {
     if (grabYear === 'All Years') {
-      return items;
+      return indexItems;
     } else {
-      return grabYear === items.date.getFullYear().toString();
+      return grabYear === indexItems.date.getFullYear().toString();
     }
   });
 
-  const allYears = props.items.map(expenses => {
-   return expenses.date.getFullYear()
-  })
+  const allYears = props.items.map((expenses) => {
+    return expenses.date.getFullYear();
+  });
   return (
     <Card className='expenses'>
-      <Filter years={new Set(allYears)} onFilterChangeYear={filterChangeListener} />
+      <Filter
+        years={new Set(allYears)}
+        onFilterChangeYear={filterChangeListener}
+      />
+      <ExpensesChart expenses={displayedExpenses} />
       <ExpensesList items={displayedExpenses} />
     </Card>
   );
