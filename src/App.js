@@ -46,9 +46,31 @@ const test_expenses = localStorageGrabber();
 function App() {
   const [expenses, setExpenseData] = useState(test_expenses);
 
+  const deleteExpenseHandler = (expenseId) => {
+    setExpenseData((prevExpenses) => {
+      const updatedExpenses = prevExpenses.filter(
+        (expense) => expense.id !== expenseId,
+      );
+      localStorage.setItem('expenses', JSON.stringify(updatedExpenses));
+      return updatedExpenses;
+    });
+  };
+
+  const editExpenseHandler = (updatedExpense) => {
+    setExpenseData((prevExpenses) => {
+      const updatedExpenses = prevExpenses.map((expense) =>
+        expense.id === updatedExpense.id ? updatedExpense : expense,
+      );
+      localStorage.setItem('expenses', JSON.stringify(updatedExpenses));
+      return updatedExpenses;
+    });
+  };
+
   const addExpenseHandler = (enteredExpenseData) => {
     setExpenseData((prevExpense) => {
-      return [enteredExpenseData, ...prevExpense];
+      const updatedExpenses = [enteredExpenseData, ...prevExpense];
+      localStorage.setItem('expenses', JSON.stringify(updatedExpenses));
+      return updatedExpenses;
     });
   };
 
@@ -56,7 +78,11 @@ function App() {
   return (
     <div>
       <NewExpense onAddExpense={addExpenseHandler} />
-      <Expenses items={expenses} />
+      <Expenses
+        items={expenses}
+        onDeleteExpense={deleteExpenseHandler}
+        onEditExpense={editExpenseHandler}
+      />
     </div>
   );
 }

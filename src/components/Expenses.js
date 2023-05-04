@@ -1,4 +1,3 @@
-'use scrict';
 import './Expenses.css';
 import Card from './UI/Card';
 import Filter from './Filter';
@@ -23,13 +22,17 @@ function Expenses(props) {
     return expenses.date.getFullYear();
   });
   return (
-    <Card className='expenses'>
+    <Card className="expenses">
       <Filter
         years={new Set(allYears)}
         onFilterChangeYear={filterChangeListener}
       />
       <ExpensesChart expenses={displayedExpenses} />
-      <ExpensesList items={displayedExpenses} />
+      <ExpensesList
+        items={displayedExpenses}
+        onDeleteExpense={props.onDeleteExpense}
+        onEditExpense={props.onEditExpense}
+      />
     </Card>
   );
 }
