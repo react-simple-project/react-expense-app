@@ -1,4 +1,3 @@
-'use scrict';
 import './Card.css';
 
 //Parent Expenses.js, ExpenseDate.js, 
